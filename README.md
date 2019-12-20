@@ -3,7 +3,7 @@
 Collect logs from [https://eu.salusconnect.io](https://eu.salusconnect.io/dashboard)
 
 
-## For each Termostat create 2 OneTouch rules for ON & OFF to send an email
+## 1. For each Termostat create 2 OneTouch rules for ON & OFF to send an email
 
 - Rules name must be in following format "log-h-living-on" & "log-h-living-off"
   change change "living" with your rooms.
@@ -14,14 +14,14 @@ Collect logs from [https://eu.salusconnect.io](https://eu.salusconnect.io/dashbo
 ![log-h-living-off](screens/log-h-living-off.jpg)
 
 
-## in Gmail mark this emails as not importants and to skip inbox
+## 2. in Gmail mark this emails as not importants and to skip inbox
 
 - open gmail Settings / Filters and Blocked Addresses
 - create a new Filter:
     - Matches: from:(support@sc-smarthome.io OR support@salusconnect.io) subject:(OneTouch rule log-)
     - Do this: Skip Inbox, Never send it to Spam, Never mark it as important
 
-## Import and "Salus-Controls.xlsx" in Google Drive
+## 3. Import and "Salus-Controls.xlsx" in Google Drive
 
 Import [Salus-Controls.xlsx](Salus-Controls.xlsx) as google sheet
 ...TODO...
