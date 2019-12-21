@@ -6,12 +6,18 @@ Collect logs from [https://eu.salusconnect.io](https://eu.salusconnect.io/dashbo
 
 - [x] make salus send you emails when Termostat starts and stops 
 - [x] script will read those emails periodicaly and insert them in a google sheet
-- [x] nicer reports how much time a thermostat runs each day in each room
+- [x] reports how much time a thermostat runs **each day** in **each room**
 
 **Results:**
 
 ![logs](screens/logs-examples.jpg)
 ![summary](screens/logs-summary.jpg)
+
+
+## Requirements
+
+- [salusconnect.io](https://eu.salusconnect.io/dashboard) Account
+- [Gmail](https://mail.google.com/) Account
 
 
 ## 1. For each Termostat create 2 OneTouch rules for ON & OFF to send an email
