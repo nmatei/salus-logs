@@ -2,13 +2,14 @@
 
 Collect logs from [https://eu.salusconnect.io](https://eu.salusconnect.io/dashboard)
 
-Main idea:
+**Main idea:**
 
 - [x] make salus send you emails when Termostat starts and stops 
 - [x] script will read those emails periodicaly and insert them in a google sheet
 - [x] nicer reports how much time a thermostat runs each day in each room
 
-Results:
+**Results:**
+
 ![logs](screens/logs-examples.jpg)
 ![summary](screens/logs-summary.jpg)
 
