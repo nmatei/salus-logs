@@ -2,6 +2,10 @@
 
 Collect logs from [https://eu.salusconnect.io](https://eu.salusconnect.io/dashboard)
 
+Main ideea:
+    [x] make salus send you emails when Termostat starts and stops 
+    [x] script will read those emails periodicaly and insert them in a google sheet
+    [x] nicer reports how much time a thermostat runs each day in each room
 
 ## 1. For each Termostat create 2 OneTouch rules for ON & OFF to send an email
 
@@ -24,7 +28,6 @@ Collect logs from [https://eu.salusconnect.io](https://eu.salusconnect.io/dashbo
 ## 3. Import and "Salus-Controls.xlsx" in Google Drive
 
 Import [Salus-Controls.xlsx](Salus-Controls.xlsx) as google sheet
-...TODO...
 
 ### Adjust summary view (second sheet)
 
@@ -38,3 +41,7 @@ Multiply rooms as needed.
     - Time driven & hour timer & Every 2 hours
 
 ![trigger](screens/run-trigger.jpg)
+
+## 4. DONE
+
+Hope it helps you! if it is you can **star** this repo.
