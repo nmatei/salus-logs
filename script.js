@@ -49,7 +49,7 @@ function collectLogs() {
  */
 function getLogsFromMail() {
   var logs = [];
-  var query = "from:(support@sc-smarthome.io) subject:(OneTouch rule log-h-) -in:trash"; // is:unread
+  var query = "from:(support@sc-smarthome.io OR support@salusconnect.io) subject:(OneTouch rule log-h-) -in:trash"; // is:unread
   var threads = GmailApp.search(query);
 
   for (var i = 0; i < threads.length; i++) {
