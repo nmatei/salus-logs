@@ -32,16 +32,51 @@ function collectLogs() {
         sheet.getRange(insertAt, 4).setValue(valueFormula);
         sheet.getRange(insertAt, 5).setValue("=C" + insertAt + "-D" + insertAt);
 
-        var startTime = new Date(cleanFormula(sheet, insertAt, 4));
+        var startTimeStr = cleanFormula(sheet, insertAt, 4);
+        var startTime = new Date(startTimeStr);
         if (lastOFFTime.getTime() > startTime.getTime()) {
           // missing ON (2 OFF records wihtout start between)
           sheet.getRange(insertAt, 5).setValue("00:00:00.000");
         } else {
           cleanFormula(sheet, insertAt, 5);
+          cleanupONRow(sheet, room, insertAt + 1, startTime);
         }
       }
     });
   }
+}
+
+/**
+ * @private
+ */
+function cleanupONRow(sheet, room, startAt, startTime) {
+  var index = findRowIndex(sheet, room, "ON", startAt, startTime);
+  if (index != -1) {
+    //Logger.log('delteRow', index);
+    sheet.deleteRow(index); 
+    return index;
+  }
+  return -1;
+}
+
+/**
+ * @private
+ */
+function findRowIndex(sheet, room, status, startAt, startTime) {
+  var time = startTime ? startTime.getTime() : false;
+  for (var i = startAt; i < 100; i++) {
+    var range = sheet.getRange(i, 1, 1, 3); // get one row
+    var row = range.getValues()[0];
+    if (row[0] == room && row[1] == status) {
+      if (!time || row[2].getTime() == time) {
+        //Logger.log("found startAt", i, room, row);
+        return i;
+      } else {
+        //Logger.log("found startAt, wrong time", i, room, row);
+      }
+    }
+  }
+  return -1;
 }
 
 /**
@@ -88,4 +123,16 @@ function cleanFormula(sheet, rowIdx, cellIdx) {
   var value = sheet.getRange(rowIdx, cellIdx).getDisplayValue();
   sheet.getRange(rowIdx, cellIdx).setValue(value);
   return value;
+}
+
+/**
+ * @private
+ */
+function cleanupRoom(){
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("logs");
+  //cleanupONRow(sheet, "living", 5, new Date("2/15/2020 20:03:21"));
+  var index = 3;
+  do {
+    index = cleanupONRow(sheet, "living", index);
+  } while (index != -1);
 }
