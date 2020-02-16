@@ -36,6 +36,9 @@ function collectLogs() {
         var startTime = new Date(startTimeStr);
         if (lastOFFTime.getTime() > startTime.getTime()) {
           // missing ON (2 OFF records wihtout start between)
+          //  could not find start time
+          //  (don't print 12/30/1899 0:00:00, but insert start time)
+          sheet.getRange(insertAt, 4).setValue(log.date);
           sheet.getRange(insertAt, 5).setValue("00:00:00.000");
         } else {
           cleanFormula(sheet, insertAt, 5);
