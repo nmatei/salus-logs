@@ -58,3 +58,8 @@ Multiply rooms as needed.
 ## 4. DONE
 
 Hope it helps you! if it is you can **star** this repo.
+
+
+## TODOs
+
+[ ] know issue: timezone change (handle -1h change)
