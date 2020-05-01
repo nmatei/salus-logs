@@ -2,6 +2,7 @@
  * Run collectLogs every {x} hours 
  */
 function collectLogs() {
+  var roomMatch = /.*log-h-(.*)-([on]*[off]*).*/i,
   var logs = getLogsFromMail();
   if (logs.length) {
     //var sheet = SpreadsheetApp.getActiveSheet();
@@ -14,7 +15,7 @@ function collectLogs() {
       var insertAt = 2,
         last = sheet.getLastRow() + 1,
         subject = log.subject,
-        match = subject.match(/.*log-h-(.*)-([on]*[off]*).*/i),
+        match = subject.match(roomMatch),
         room = match[1],
         status = match[2].toUpperCase();
 
