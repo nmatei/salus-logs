@@ -33,10 +33,15 @@ Collect logs from [https://eu.salusconnect.io](https://eu.salusconnect.io/dashbo
 
 ## 2. in Gmail mark this emails as not importants and to skip inbox
 
-- open gmail Settings / Filters and Blocked Addresses
+- open gmail **Settings** (cog wheel) / **Filters and Blocked Addresses**
 - create a new Filter:
-    - Matches: **from:(support@sc-smarthome.io OR support@salusconnect.io) subject:(OneTouch rule log-)**
-    - Do this: **Skip Inbox, Never send it to Spam, Never mark it as important**
+    - Matches: 
+      - from: **support@sc-smarthome.io OR support@salusconnect.io**
+      - subject: **OneTouch rule log-**
+    - next, Do this: 
+      - Skip Inbox
+      - Never send it to Spam
+      - Never mark it as important
 
 ## 3. Make a copy of "Salus Controls" in your Google Drive
 
