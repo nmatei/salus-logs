@@ -14,8 +14,9 @@ function collectLogs() {
       var insertAt = 2,
         last = sheet.getLastRow() + 1,
         subject = log.subject,
-        room = subject.replace(/.*log-h-(\w*)-.*/gi, "$1"),
-        status = subject.indexOf("-off") >= 0 ? "OFF" : "ON";
+        match = subject.match(/.*log-h-(.*)-([on]*[off]*).*/i),
+        room = match[1],
+        status = match[2].toUpperCase();
 
       sheet.getRange(insertAt, 1).setValue(room);
       sheet.getRange(insertAt, 2).setValue(status);
