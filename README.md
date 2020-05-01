@@ -38,9 +38,13 @@ Collect logs from [https://eu.salusconnect.io](https://eu.salusconnect.io/dashbo
     - Matches: **from:(support@sc-smarthome.io OR support@salusconnect.io) subject:(OneTouch rule log-)**
     - Do this: **Skip Inbox, Never send it to Spam, Never mark it as important**
 
-## 3. Import and "Salus-Controls.xlsx" in Google Drive
+## 3. Make a copy of "Salus Controls" in your Google Drive
 
-Import [Salus-Controls.xlsx](Salus-Controls.xlsx) as google sheet
+Open Google spreadsheets example [Salus Controls Demo](https://docs.google.com/spreadsheets/d/185eJTC7BAHvtVL5FA-NkhWEhe1ENYjVyGXD5xyUEPTA/edit?usp=sharing)
+and make a copy of it (to have your own document)
+
+**File** -> **Make a copy** -> 
+  then your select name and folder where to store this file
 
 ### Adjust summary view (second sheet)
 
@@ -48,12 +52,14 @@ Multiply rooms as needed.
 
 ### Open Tools/Script editor
 
-- copy content of [script.js](script.js) and paste it inside "Script editor"
 - press "Current project triggers" button (clock icon)
+    - press "+ Add Trigger"
     - select **collectLogs()** as function to run
     - Time driven & hour timer & Every 2 hours
 
 ![trigger](screens/run-trigger.jpg)
+
+- if you are a developer, and want to make sure the code is **safe**: see [script.js](script.js) :) 
 
 ## 4. DONE
 
