@@ -1,8 +1,10 @@
+const query = "from:(support@sc-smarthome.io OR support@salusconnect.io) subject:(OneTouch rule log-h-) -in:trash"; // is:unread
+const roomMatch = /.*log-h-(.*)-([on]*[off]*).*/i;
+
 /**
  * Run collectLogs every {x} hours 
  */
 function collectLogs() {
-  var roomMatch = /.*log-h-(.*)-([on]*[off]*).*/i;
   var logs = getLogsFromMail();
   if (logs.length) {
     //var sheet = SpreadsheetApp.getActiveSheet();
@@ -74,10 +76,10 @@ function findRowIndex(sheet, room, status, startAt, startTime) {
     var row = range.getValues()[0];
     if (row[0] == room && row[1] == status) {
       if (!time || row[2].getTime() == time) {
-        //Logger.log("found startAt", i, room, row);
+        Logger.log("found startAt", i, room, row);
         return i;
       } else {
-        //Logger.log("found startAt, wrong time", i, room, row);
+        Logger.log("found startAt, wrong time", i, room, row);
       }
     }
   }
@@ -89,10 +91,16 @@ function findRowIndex(sheet, room, status, startAt, startTime) {
  */
 function getLogsFromMail() {
   var logs = [];
-  var query = "from:(support@sc-smarthome.io OR support@salusconnect.io) subject:(OneTouch rule log-h-) -in:trash"; // is:unread
   var threads = GmailApp.search(query);
+  let start = 0;
+  let end = threads.length;
+  Logger.log("Total email threads = %s", end);
+  if (end > 50) {
+    start = end - 50;
+    Logger.log("Limit to %s - %s email threads", start, end);
+  }
 
-  for (var i = 0; i < threads.length; i++) {
+  for (var i = start; i < end; i++) {
     var messages = threads[i].getMessages();
     for (var j = messages.length - 1; j >= 0; j--) {
       var mail = messages[j];
@@ -114,9 +122,7 @@ function getLogsFromMail() {
     }
   }
   
-  logs.sort(function(a, b) {
-    return a.date.getTime() - b.date.getTime();
-  });
+  logs.sort((a, b) => a.date.getTime() - b.date.getTime());
   return logs;
 }
 
