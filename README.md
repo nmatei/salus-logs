@@ -74,3 +74,4 @@ Hope it helps you! if it is you can **star** this repo.
 ## TODOs
 
 [ ] know issue: timezone change (handle -1h change)
+[ ] fix startTime when is "12/30/1899 0:00:00"
