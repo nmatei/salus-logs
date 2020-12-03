@@ -1,5 +1,6 @@
 const query = "from:(support@sc-smarthome.io OR support@salusconnect.io) subject:(OneTouch rule log-h-) -in:trash"; // is:unread
 const roomMatch = /.*log-h-(.*)-([on]*[off]*).*/i;
+const maxThreads = 25;
 
 /**
  * Run collectLogs every {x} hours 
@@ -86,17 +87,32 @@ function findRowIndex(sheet, room, status, startAt, startTime) {
   return -1;
 }
 
+function getThreads() {
+  Logger.log("Searching email threads");
+  let threads = [];
+  try {
+    threads = GmailApp.search(query);
+  } catch (e) {
+    // TODO DEADLINE_EXCEEDED?
+    //   https://developers.google.com/google-ads/api/reference/rpc/v5/InternalErrorEnum.InternalError?hl=en
+    Logger.log("Searching email threads failed. Retring one more time", e);
+    threads = GmailApp.search(query);
+  }
+
+  return threads;
+}
+
 /**
  * @private
  */
 function getLogsFromMail() {
   var logs = [];
-  var threads = GmailApp.search(query);
+  const threads = getThreads();
   let start = 0;
   let end = threads.length;
   Logger.log("Total email threads = %s", end);
-  if (end > 50) {
-    start = end - 50;
+  if (end > maxThreads) {
+    start = end - maxThreads;
     Logger.log("Limit to %s - %s email threads", start, end);
   }
 
