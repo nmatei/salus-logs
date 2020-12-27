@@ -1,4 +1,4 @@
-const query = "from:(support@sc-smarthome.io OR support@salusconnect.io) subject:(OneTouch rule log-h-) -in:trash"; // is:unread
+const query = "from:(support@sc-smarthome.io OR support@salusconnect.io) subject:(OneTouch log-h-) -in:trash"; // is:unread
 const roomMatch = /.*log-h-(.*)-([on]*[off]*).*/i;
 const maxThreads = 25;
 

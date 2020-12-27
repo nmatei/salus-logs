@@ -37,7 +37,7 @@ Collect logs from [https://eu.salusconnect.io](https://eu.salusconnect.io/dashbo
 - create a new Filter:
     - Matches: 
       - from: **support@sc-smarthome.io OR support@salusconnect.io**
-      - subject: **OneTouch rule log-**
+      - subject: **OneTouch log-h-**
     - next, Do this: 
       - Skip Inbox
       - Never send it to Spam
