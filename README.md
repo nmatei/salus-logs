@@ -12,6 +12,7 @@ Collect logs from [https://eu.salusconnect.io](https://eu.salusconnect.io/dashbo
 
 ![logs](screens/logs-examples.jpg)
 ![summary](screens/logs-summary.jpg)
+![charts](screens/logs-charts.jpg)
 
 
 ## Requirements
